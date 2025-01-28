@@ -1,0 +1,694 @@
+<html>
+    <head>
+        <title>Portal</title>
+    
+    
+        <link rel="stylesheet" href="stylemm.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css.css">
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.polyfills.min.js"></script>
+
+
+
+    </head>
+    <body>
+        <!-----------Navigation bar--------------------->
+        <!-----------Navigation bar-------------------->
+<section id="nav-bar">
+  
+  <!-- Banner Section -->
+  <div class="banner" style="text-align: center; background:  skyblue; padding: 20px;">
+    <img src="https://fcrit.ac.in/img/fcritlogo.png" alt="Institute Logo" style="width: 100px; height: auto;">
+    <h1 style="margin: 10px 0; font-size: 2em;">Fr. C. Rodrigues Institute of Technology</h1>
+    <p style="margin: 5px 0; font-size: 1em; color: #555;">Agnel Technical Education Complex Sector 9-A, Vashi, Navi Mumbai, Maharashtra, India PIN - 400703</p>
+    <p style="margin: 5px 0; font-size: 1em; color: #555;">(An Autonomous Institute & Permanently Affiliated To University Of Mumbai)</p>
+  </div>
+
+  <!-- Navigation Section -->
+  <style>
+    /* Styling for the navigation bar */
+    .nav {
+      background: #f5f5f5;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+  
+    .nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1em;
+      position: relative;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+  
+    /* Hover effect */
+    .nav a:hover {
+      color: #0056b3;
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+  
+    /* Add underline animation */
+    .nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #0056b3;
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+  
+    .nav a:hover::after {
+      width: 100%;
+    }
+  
+    /* Responsive design for smaller screens */
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 15px;
+      }
+  
+      .nav a {
+        margin: 10px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+  
+  <div class="nav">
+    <a href="#top">HOME</a>
+    <a href="#about">ABOUT US</a>
+    <a href="allprojects.html">PROJECTS</a>
+    <a href="#team">FACULTY</a>
+    <a href="#contact">CONTACT US</a>
+    <a href="reg_2.html">REGISTER</a>
+    <a href="lg.html">LOGIN</a>
+  </div>
+  
+</section>
+
+      
+        <!------------slider------------->
+        <div id="headerSlider" class="carousel slide" data-ride="carousel" data-interval="3000">
+          <ol class="carousel-indicators">
+            <li data-target="#headerSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#headerSlider" data-slide-to="1"></li>
+            <li data-target="#headerSlider" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="WhatsApp Image 2025-01-08 at 12.18.20_3891bc54.jpg" class="d-block w-100">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Our Campus</h5>
+                <p class="black-text">Take a tour of our beautiful campus.</p>
+                <style>
+                  .black-text {
+                    color: black;
+                    font-size: 24px; /* Increase the font size */
+                    font-weight: bold; /* Make the text bold */
+                    padding: 10px; /* Add some padding around the text */
+                    line-height: 1.5; /* Adjust line height for better readability */
+                    text-align: center; /* Center the text */
+                    background-color: rgba(255, 255, 255, 0.6); /* Add a light background to make text stand out */
+                    border-radius: 5px; /* Slightly round the corners of the background */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+                    margin-top: 20px; /* Add some space above the text */
+                  }
+                </style>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="WhatsApp Image 2025-01-09 at 22.54.14_4d37c3b8.jpg" class="d-block w-100">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Alumni Meet</h5>
+                <p class="black-text">Join our annual alumni meet for networking.</p>
+                <style>
+                  .black-text {
+                    color: black;
+                    font-size: 24px; /* Increase the font size */
+                    font-weight: bold; /* Make the text bold */
+                    padding: 10px; /* Add some padding around the text */
+                    line-height: 1.5; /* Adjust line height for better readability */
+                    text-align: center; /* Center the text */
+                    background-color: rgba(255, 255, 255, 0.6); /* Add a light background to make text stand out */
+                    border-radius: 5px; /* Slightly round the corners of the background */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+                    margin-top: 20px; /* Add some space above the text */
+                  }
+                </style>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.fcrit.ac.in/cdn/extc/5.png" class="d-block w-100">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Electronics Department</h5>
+                <p class="black-text">Explore the innovation in Electronics & Telecommunication.</p>
+                <style>
+                  .black-text {
+                    color: black;
+                    font-size: 24px; /* Increase the font size */
+                    font-weight: bold; /* Make the text bold */
+                    padding: 10px; /* Add some padding around the text */
+                    line-height: 1.5; /* Adjust line height for better readability */
+                    text-align: center; /* Center the text */
+                    background-color: rgba(255, 255, 255, 0.6); /* Add a light background to make text stand out */
+                    border-radius: 5px; /* Slightly round the corners of the background */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+                    margin-top: 20px; /* Add some space above the text */
+                  }
+                </style>
+                
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#headerSlider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#headerSlider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        
+        <!----------------about------------>
+        <style>
+          /* General Styling */
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+          }
+        
+          #about {
+            padding: 50px 20px;
+            background-color: #fff;
+          }
+        
+          .container {
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+        
+          .center-content {
+            text-align: center;
+          }
+        
+          h2, h3 {
+            color: #0056b3;
+            margin-bottom: 20px;
+          }
+        
+          p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1em;
+          }
+        
+          .quote {
+            font-style: italic;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+          }
+        
+          a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+          }
+        
+          a:hover {
+            color: #ff5733;
+            text-decoration: underline;
+          }
+        
+          ol {
+            text-align: left;
+            margin: 0 auto;
+            padding: 0;
+            list-style-position: inside;
+          }
+        
+          /* Add hover effect for sections */
+          .section {
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+        
+          .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          }
+        
+          /* Add animation for text */
+          h2 {
+            position: relative;
+            overflow: hidden;
+          }
+        
+          h2::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background: #0056b3;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease-in-out;
+          }
+        
+          h2:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        
+          /* Keyframe animation */
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        </style>
+        
+        <section id="about">
+          <div class="container center-content">
+            <h2>About Us</h2>
+            <div class="container center-content">
+              <p class="quote">
+                "The ideal engineer is a composite. He is not a scientist, he is not a mathematician, he is not a sociologist or a writer, but he may use the knowledge and techniques of any or all of these disciplines in solving engineering problems" 
+                <strong>N. W. Dougherty</strong>.
+              </p>
+              <div class="section center-content">
+                <h2>Introduction:</h2>
+                <p>Welcome to the Electronics and Telecommunication Engineering Department (EXTC) of Fr. C. Rodrigues Institute of Technology, Vashi, Navi Mumbai. All the Visions and Missions are <a href="vision.html">HERE</a>.</p>
+                <p>Electronics and telecommunication engineering is one of the largest and fastest-growing fields of engineering. Having qualified and trained professionals in this field are the need of the hour. Currently, the department offers:</p>
+                <ol>
+                  <li>The Bachelor of Engineering (BE) degree (undergraduate)</li>
+                  <li>The Ph.D. degree in Electronics & Telecommunication Engineering</li>
+                </ol>
+                <p>This department was established during the inception of the institute in 1994. Further details regarding UG course contents, department strength, achievements, etc. are available in "Brochure" which can be downloaded from the link available at the end of this document.</p>
+              </div>
+              <div class="section center-content">
+                <h2>Student-Alumni Mentoring Platform:</h2>
+                <p>Welcome to FCRIT (EXTC) STUDENT-ALUMNI MENTORING PLATFORM, a one-of-a-kind platform designed to bridge the gap between students and alumni, fostering meaningful connections and lifelong mentorship opportunities.
+
+                  Our mission is to empower students with guidance, knowledge, and inspiration from experienced alumni who have walked the same path. By creating a collaborative environment, we aim to help students achieve their academic, career, and personal growth goals while enabling alumni to give back to their alma mater in a truly impactful way.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-----------roles-------->
+        <section id="Roles">
+          <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+          }
+      
+          #Roles {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+          }
+      
+          .section-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+          }
+      
+          .roles {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+          }
+      
+          .role-card {
+            background-color: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            width: 300px;
+          }
+      
+          .role-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          }
+      
+          .role-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #0056b3;
+          }
+      
+          .role-card p {
+            font-size: 1em;
+            color: #666;
+          }
+      
+          /* Modal Styling */
+          .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+          }
+      
+          .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+          }
+      
+          .modal-content h2 {
+            color: #333;
+            margin-bottom: 15px;
+          }
+      
+          .modal-content p {
+            color: #666;
+            font-size: 1em;
+          }
+      
+          .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            color: rgba(36, 119, 252, 0.997);
+            cursor: pointer;
+          }
+        </style>
+          <div class="container">
+            <h1 class="section-title">Roles</h1>
+            <div class="row roles">
+              <div class="role-card" onclick="showRoleDetails('student')">
+                <h3>Student</h3>
+                <p>Students get the opportunity to be part of real-life projects and demo projects during their course of study, thereby helping them acquire technical experience.</p>
+              </div>
+      
+              <div class="role-card" onclick="showRoleDetails('mentor')">
+                <h3>Mentor</h3>
+                <p>A mentor is an experienced and trusted advisor who provides guidance, and expertise to help individuals achieve their personal or professional goals. Help mentees set and achieve goals.</p>
+              </div>
+      
+              <div class="role-card" onclick="showRoleDetails('teacher')">
+                <h3>Teacher</h3>
+                <p>A teacher educates, guides, and inspires students to reach their full potential. They create a positive learning environment that fosters intellectual, emotional, and social growth.</p>
+              </div>
+            </div>
+          </div>
+      <!-- Modal Structure -->
+<div id="roleModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center;">
+  <div style="background: white; padding: 20px; border-radius: 8px; position: relative; width: 400px; text-align: center;">
+    <span 
+      onclick="closeModal()" 
+      style="position: absolute; top: 10px; right: 10px; cursor: pointer; font-size: 18px; font-weight: bold; color: #333;"
+      onmouseover="this.style.color='red'" 
+      onmouseout="this.style.color='#333'"
+    >
+      &times; <!-- Cross symbol -->
+    </span>
+    <h2 id="roleTitle"></h2>
+    <p id="roleDescription"></p>
+  </div>
+</div>
+<script>
+  function showRoleDetails(role) {
+    const roleModal = document.getElementById('roleModal');
+    const roleTitle = document.getElementById('roleTitle');
+    const roleDescription = document.getElementById('roleDescription');
+
+    // Role-specific content
+    const rolesData = {
+      student: {
+        title: 'Student',
+        description:
+          'Students gain hands-on experience by participating in real-life and demo projects, enhancing their technical and problem-solving skills.',
+      },
+      mentor: {
+        title: 'Mentor',
+        description:
+          'Mentors provide guidance and support to students, offering valuable insights and knowledge for successful project completion.',
+      },
+      teacher: {
+        title: 'Teacher',
+        description:
+          'Teachers inspire and educate students, fostering their intellectual and personal growth in a positive learning environment.',
+      },
+    };
+
+    // Set modal content
+    roleTitle.textContent = rolesData[role].title;
+    roleDescription.textContent = rolesData[role].description;
+
+    // Show the modal
+    roleModal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    const roleModal = document.getElementById('roleModal');
+    roleModal.style.display = 'none';
+  }
+</script>
+</section>
+
+          <!----------Team----->
+          <section id="team">
+            <div class="container">
+              <style>
+                .row.Roles {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 20px; /* Adds space between each faculty card */
+                }
+              
+                .profile-pic {
+                  position: relative;
+                  width: 30%; /* Adjusts the width of each profile card */
+                }
+              
+                .profile-pic img {
+                  width: 100%;
+                  height: auto;
+                }
+              
+                .bio {
+                  display: none;
+                  position: absolute;
+                  bottom: 10px;
+                  background-color: rgba(0, 0, 0, 0.7);
+                  color: white;
+                  padding: 10px;
+                }
+              
+                .profile-pic:hover .bio {
+                  display: block;
+                }
+              
+                .profile-pic h2, .profile-pic h3 {
+                  text-align: center;
+                }
+              </style>
+              
+              <div class="container">
+                <h1>Our Teaching Staff</h1>
+                <div class="row Roles">
+                  <div class="col-md-2 profile-pic text-center">
+                    <div class="img-box">
+                      <img src="https://fcrit.ac.in/cdn/faculty/1575004138-Milind.Sir.jpg_160.jpg" class="img-responsive">
+                    </div>
+                  
+                    <div>
+                      <h2>Dr. Milind Shah</h2>
+                      <h3>Ph.D, Professor-EXTC, Dean (Academics)-FCRIT</h3>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-2 profile-pic text-center">
+                    <div class="img-box">
+                      <img src="https://fcrit.ac.in/cdn/faculty/1671184990-Dr.Megha.PNG_160.jpg" class="img-responsive">
+                    </div>
+                    <div>
+                      <h2>Dr. Megha Kolhekar</h2>
+                      <h3>Ph.D, Associate Professor & Head of Department</h3>
+                    </div>
+                  </div>
+              
+                  <div class="col-md-2 profile-pic text-center">
+                    <div class="img-box">
+                      <img src="https://fcrit.ac.in/cdn/faculty/1643953044-pranalimaamphoto.1.min.jpeg_160.jpg" class="img-responsive">
+                    </div>
+                    <div>
+                      <h2>Dr. Pranali Choudhari</h2>
+                      <h3>Ph.D, Asso Prof, Astt.HOD, Asso Dean (Admin & Faculty)</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Hidden Faculty Members -->
+  
+
+  <!-- Show All Button -->
+  <div class="text-center">
+    <div class="text-center">
+      <!-- Show All Button with PDF Link -->
+      <button class="btn btn-primary" id="showAllBtn">
+        <a href="Faculty.pdf" target="_blank" onclick="sessionStorage.setItem('returnToHome', true);" style="color: white; text-decoration: none;">Show All</a>
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+
+  
+
+
+            </div>
+              
+          </section>
+
+          <!-----Get in Touch---->
+          <section id="contact">
+            <div class="container">
+              <h1>Get In Touch</h1>
+              <div class="row">
+                <div class="col-md-6">
+                  <script>
+                    function validateForm() {
+      var name = document.forms["contact-form"]["name"].value;
+      var phone = document.forms["contact-form"]["phone"].value;
+      var email = document.forms["contact-form"]["email"].value;
+      var message = document.forms["contact-form"]["message"].value;
+
+      if (name == "" || phone == "" || email == "" || message == "") {
+        alert("All fields must be filled out");
+        return false;
+      }
+
+      // Display success message
+      alert("Thank you for your message. We will get back to you soon.");
+      return true;
+    }
+
+    // Function to auto-resize textarea
+    function autoResizeTextarea() {
+      // Reset the height to auto so it can shrink when text is deleted
+      this.style.height = 'auto';
+
+      // Set the height to the scrollHeight for auto-expansion
+      this.style.height = (this.scrollHeight) + 'px';
+    }
+    // JavaScript to handle "Show All" button click
+  document.getElementById('showAllBtn').addEventListener('click', function () {
+    const hiddenFaculty = document.querySelector('.hidden-faculty');
+    if (hiddenFaculty.style.display === 'none') {
+      hiddenFaculty.style.display = 'flex'; // Show the hidden faculty
+      this.textContent = 'Show Less'; // Change button text
+    } else {
+      hiddenFaculty.style.display = 'none'; // Hide the faculty again
+      this.textContent = 'Show All'; // Revert button text
+    }
+  });
+   // Check if the user came from the PDF
+   if (sessionStorage.getItem('returnToHome')) {
+      sessionStorage.removeItem('returnToHome'); // Clear the flag
+      alert('Welcome back to the homepage!');
+    }
+
+                  </script>
+                  
+                  <form name="contact-form" class="contact-form" onsubmit="return validateForm()">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                      <input type="tel" name="phone" class="form-control" placeholder="Phone Number" pattern="[0-9]{10}" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Email-id">
+                    </div>
+                    <div class="form-group">
+                      <textarea name="message" class="form-control" rows="4" placeholder="Your Message" oninput="autoResizeTextarea.call(this)" style="resize: none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+                  </form>
+                  
+                </div>
+                <div class="col-md-6 contact-info">
+                  <div class="follow"><i class="fa fa-map-marker" ></i><b>  Address: </b> Fr. C. Rodrigues Institute of Technology
+                    Agnel Technical Education Complex
+                    Sector 9-A, Vashi, Navi Mumbai,
+                    Maharashtra, India
+                    PIN - 400703 </div>
+                
+                
+                  <div class="follow"><i class="fa fa-phone" ></i><b>  Phone:</b>  (022) 27661924 , 27660619, 27660714, 27660715 </div>
+
+                  <div class="follow"><i class="fa fa-envelope" ></i><b>  E-mail:</b>  principal@fcrit.ac.in  </div>
+                
+                
+                </div>
+              </div>
+            </div>
+          </section>
+          <script src="js/smooth-scroll.polyfills.min.js"></script>
+          <script>
+            var scroll = new SmoothScroll('a[href*="#"]');
+          </script>
+       
+    </body>
+</html>

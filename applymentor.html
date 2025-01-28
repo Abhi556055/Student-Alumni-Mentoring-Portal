@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Student <span>Dashboard</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="demo.html"><i class="fas fa fa-home"></i></a></h3>
+      </div>
+      <div class="right_area">
+        <a href="demo.html" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="p.png" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="ongoing.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+        <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+        <a href="status.html"><i class="fas fa-th"></i><span>Application Status</span></a>
+        <a href="starred.html"><i class="fas fa-info-circle"></i><span>Starred Projects/span></a>
+        <a href="applymentor.html"><i class="fas fa-sliders-h"></i><span>Apply for Mentorship</span></a>
+      </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        <img src="p.png" class="profile_image" alt="">
+        <h4>Jessica</h4>
+      </div>
+      <a href="ongoing.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+      <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+      <a href="status.html"><i class="fas fa fa-check-square"></i><span>Application Status</span></a>
+      <a href="starred.html"><i class="fas fa fa-star"></i><span>Starred Projects</span></a>
+      <a href="#"><i class="fas fa fa-edit"></i><span>Apply for Mentorship</span></a>
+      <a href="alumni.html"><i class="fas fa fa-edit"></i><span>Referrals</span></a>
+    </div>
+    <!--sidebar end-->
+
+    <div class="content">
+      <div class="card">
+        <br><h3>APPLICATION FOR MENTORING</h3>
+        <style>
+          .form-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          .form-container label {
+            font-weight: bold;
+          }
+          .form-container input, .form-container select, .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+          }
+          .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          .form-container button:hover {
+            background-color: #45a049;
+          }
+        </style>
+      </head>
+      <body>
+      
+        <div class="form-container">
+          <h2>Application for Mentorship</h2>
+          <form id="mentorApplicationForm">
+            <label for="fname">Name:</label>
+            <input type="text" id="fname" name="fname" required><br>
+      
+            <label for="role">Current Role:</label>
+            <input type="text" id="role" name="role" required><br>
+      
+            <label for="projects">Have you completed any projects? (Yes/No):</label>
+            <input type="text" id="projects" name="projects" required><br>
+      
+            <label for="interest">What is your domain of interest?</label>
+            <input type="text" id="interest" name="interest" required><br>
+      
+            <label for="tech">What Technologies have you worked on?</label>
+            <input type="text" id="tech" name="tech" required><br>
+      
+            <label for="motivation">Why do you want to be a mentor?</label>
+            <textarea id="motivation" name="motivation" rows="4" required></textarea><br>
+      
+            <label for="experience">What mentoring experience do you have? (If applicable)</label>
+            <textarea id="experience" name="experience" rows="4"></textarea><br>
+      
+            <label for="availability">How many hours can you dedicate to mentoring each week?</label>
+            <input type="number" id="availability" name="availability" min="1" max="20" required><br>
+      
+            <label for="skills">What skills do you want to help mentees with?</label>
+            <textarea id="skills" name="skills" rows="4" required></textarea><br>
+      
+            <label for="future_goals">What are your goals for this mentorship program?</label>
+            <textarea id="future_goals" name="future_goals" rows="4" required></textarea><br>
+      
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('#mentorApplicationForm').submit(function(e) {
+              e.preventDefault(); // Prevent form submission for now
+      
+              // Collecting form data
+              const formData = {
+                name: $('#fname').val(),
+                role: $('#role').val(),
+                projects: $('#projects').val(),
+                interest: $('#interest').val(),
+                tech: $('#tech').val(),
+                motivation: $('#motivation').val(),
+                experience: $('#experience').val(),
+                availability: $('#availability').val(),
+                skills: $('#skills').val(),
+                future_goals: $('#future_goals').val()
+              };
+      
+              // Checking the inputs before submission (simple validation)
+              let errors = [];
+              for (const key in formData) {
+                if (!formData[key]) {
+                  errors.push(key);
+                }
+              }
+      
+              if (errors.length > 0) {
+                alert(`Please fill out the following fields: ${errors.join(', ')}`);
+              } else {
+                alert('Application submitted successfully!'); // Placeholder for successful submission
+                console.log(formData); // You can send this data to a server here
+              }
+            });
+          });
+        </script>
+      
+      </body>
+      </html>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>

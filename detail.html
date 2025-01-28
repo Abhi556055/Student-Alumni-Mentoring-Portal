@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Dashboard</title>
+  <style>
+    .alumni-dashboard {
+      margin: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    #alumni-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    #alumni-table th, #alumni-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    #alumni-table th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    #alumni-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .message-button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .message-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Popup styles */
+    .popup-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 2px solid #ddd;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .popup-container textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    .popup-container button {
+      margin-right: 10px;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="alumni-dashboard">
+    <table id="alumni-table">
+      <thead>
+        <tr>
+          <th>Roll No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>LinkedIn</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Popup for messaging -->
+  <div class="popup-overlay" id="popup-overlay"></div>
+  <div class="popup-container" id="popup-container">
+    <h3>Send a Message</h3>
+    <textarea id="message-text" placeholder="Write your message here..."></textarea>
+    <button id="send-button">Send</button>
+    <button id="cancel-button">Cancel</button>
+  </div>
+
+  <script>
+    const alumniData = [
+    { rollNo: "300032", name: "NAIK PARAG LAXMAN", email: "naikparag@gmail.com", linkedin: "https://linkedin.com/in/parag-naik-a89ab033" },
+  { rollNo: "300061", name: "VAIDYA RAJAT RAVINDRA", email: "rajat.vaidya@gmail.com", linkedin: "" },
+  { rollNo: "300062", name: "VED PRATIK UDAY", email: "symbolved@gmail.com", linkedin: "https://linkedin.com/in/pratik-ved-6691b831" },
+  { rollNo: "300153", name: "VADE AMIT RAMAKANT", email: "amitvade@gmail.com", linkedin: "https://linkedin.com/in/amit-vade-310b4715" },
+  { rollNo: "300159", name: "KARYEKAR SWAPNIL SATEESH", email: "swapnil.21@gmail.com", linkedin: "https://linkedin.com/in/swapnil-karyekar-00a48114" },
+  { rollNo: "300103", name: "IRANI KAIZAD", email: "kaizad.irani@outlook.com", linkedin: "https://linkedin.com/in/kaizad-irani-1176a07" },
+  { rollNo: "300124", name: "MHASKAR PRADNYA PRABHAKAR", email: "pradnyamhaskar@gmail.com", linkedin: "https://linkedin.com/in/pradnya-mhaskar-nagpure-297a46133" },
+  { rollNo: "300130", name: "NAIR RASHMI VIJAYARAGHAVAN", email: "rashmi.v.nair@gmail.com", linkedin: "https://linkedin.com/in/rashmi-v-nair-3184a88" },
+  { rollNo: "300202", name: "AJIT VENKATACHALAM", email: "ajitvi23@gmail.com", linkedin: "" },
+  { rollNo: "300206", name: "BHARDWAJ ONKAR PRAKASH", email: "heliophile@gmail.com", linkedin: "https://linkedin.com/in/onkarbhardwaj" },
+  { rollNo: "300321", name: "KHAN UMER GESU", email: "ukmight@gmail.com", linkedin: "https://linkedin.com/in/ukmight" },
+  { rollNo: "300323", name: "KORE TRUPTI NARESH", email: "kore.trupti@gmail.com", linkedin: "https://linkedin.com/in/trupti-kore-16a23534" },
+  { rollNo: "300364", name: "BINESH RAVINDRAN", email: "bbinesh.ravindran@gmail.com", linkedin: "https://linkedin.com/in/bbineshravindran" },
+  { rollNo: "300371", name: "SEQUEIRA KENNETH ERIC W.", email: "kennybaba@gmail.com", linkedin: "https://linkedin.com/in/kennethsequeira" },
+  { rollNo: "300372", name: "BHATIA KUNAL MOHAN", email: "kunalmbhatia@gmail.com", linkedin: "https://linkedin.com/in/kunal-bhatia-a4268215/" },
+  { rollNo: "300725", name: "JOSHI HERAMB JAYPRAKASH", email: "vishnew89@gmail.com", linkedin: "https://linkedin.com/in/herambjoshi" },
+  { rollNo: "300728", name: "KHAVASKAR AMOL PRAKASH", email: "amolkhavaskar@hotmail.com", linkedin: "https://linkedin.com/in/amolkhavaskar" },
+  { rollNo: "300733", name: "MOHITE MAYUR MANOHAR", email: "mohitemayurm@gmail.com", linkedin: "https://linkedin.com/in/mayurmohite9" },
+  { rollNo: "300736", name: "MISHRA NARENDRA KISHORE", email: "narendrakishoremishra@gmail.com", linkedin: "https://linkedin.com/in/narendrakishoremishra" },
+  { rollNo: "300739", name: "PATIL DIPESH ARUN", email: "dipeshpatil.nh@gmail.com", linkedin: "https://linkedin.com/in/dipesh-patil-1ba156117" },
+  { rollNo: "300751", name: "SINGH NIKHIL SATYAPRAKASH", email: "nikhil_singh@outlook.com", linkedin: "https://linkedin.com/in/nikhil-kumar-singh-106ba3b8" },
+  { rollNo: "300753", name: "SRIVASTAVA ISHITA RAVI PRAKASH", email: "ishita243@gmail.com", linkedin: "https://linkedin.com/in/ishita-srivastava-2ba6b4a3" },
+  { rollNo: "300755", name: "TELI ROHAN SATISH", email: "rohan.teli164@gmail.com", linkedin: "https://linkedin.com/in/rohan-teli-8516a6105" },
+  { rollNo: "300756", name: "TYAGI DHRUVI ANIL KUMAR", email: "dhruvi.tyagi@gmail.com", linkedin: "https://linkedin.com/in/dhruvi-tyagi-541b8270" },
+  { rollNo: "300763", name: "AGARWAL ROHIT PARVESH", email: "rpkaggarwal@gmail.com", linkedin: "https://linkedin.com/in/rohit-aggarwal-90633139" },
+  { rollNo: "300766", name: "KULKARNI ANIKET SUHAS", email: "kulkarnisaniket@gmail.com", linkedin: "https://linkedin.com/in/kulkarnianiket38" },
+  { rollNo: "300767", name: "KEER NEHA UDAY", email: "nehakeer2@gmail.com", linkedin: "https://linkedin.com/in/neha-keer-8572b719" },
+  { rollNo: "300771", name: "SAWANT VINITA ANADRAO", email: "sawantvinita19@gmail.com", linkedin: "https://linkedin.com/in/vinita-sawant-55a07242" },
+  { rollNo: "300802", name: "ANAISHA JAYKUMAR", email: "anaisha.p.jaykumar@gmail.com", linkedin: "https://linkedin.com/in/anaishajaykumar" },
+  { rollNo: "300805", name: "CHANDAK ASHISH SHRIRAM", email: "achandak11@gmail.com", linkedin: "https://linkedin.com/in/ashish-chandak-800b8827" },
+  { rollNo: "300818", name: "KAMBLE PREMKUMAR BHIKAJI", email: "kamble.premkumar@yahoo.co.in", linkedin: "https://linkedin.com/in/premkumar-kamble-3aa73235" },
+  { rollNo: "300835", name: "NARALKAR NIKHIL PRADEEP", email: "nikhil.naralkar@gmail.com", linkedin: "https://linkedin.com/in/nikhilnaralkar" },
+  { rollNo: "300904", name: "BHANGALE DEVENDRA BHALCHANDRA", email: "devendra.bhangale1@gmail.com", linkedin: "https://linkedin.com/in/devendrabhangale" },
+  { rollNo: "300905", name: "BHANGARE AKASH VIVEK", email: "a.ab1819@gmail.com", linkedin: "https://linkedin.com/in/akash-bhangare-63377b5b" },
+  { rollNo: "300914", name: "JAIN TEJAS RAJENDRA", email: "tejasjain1991@hotmail.com", linkedin: "https://linkedin.com/in/tejas-jain-03805961" },
+  { rollNo: "300916", name: "KHANDARE SANKET JAYANT", email: "sanketjk29@gmail.com", linkedin: "https://linkedin.com/in/sanket-khandare-b8610a89" },
+  { rollNo: "300917", name: "KHATRI SALMAN SALIM", email: "sameul93@gmail.com", linkedin: "https://linkedin.com/in/salman-khatri-56568aa2" },
+  { rollNo: "300919", name: "MANIYAR MAYUR PAWANKUMAR", email: "mayur.maniyar@hotmail.com", linkedin: "https://linkedin.com/in/mayur-maniyar" },
+  { rollNo: "300920", name: "MARWAR SAYALI VINJAY", email: "smarawar27@gmail.com", linkedin: "https://linkedin.com/in/sayalim" },
+  { rollNo: "300922", name: "MHATRE SNEHAL JITENDRA", email: "snehalm512@gmail.com", linkedin: "https://linkedin.com/in/snehalmhatre" },
+  { rollNo: "300934", name: "PATIL RUTUJA SHARAD", email: "08rutuja@gmail.com", linkedin: "https://linkedin.com/in/rutuja-patil-jbims" },
+  { rollNo: "300936", name: "PENKAR RUTWIJ BHACHANDRA", email: "rutwij2005@gmail.com", linkedin: "https://linkedin.com/in/rutwij-penkar-a0482569" },
+  { rollNo: "300938", name: "PINTO MELISSA", email: "pintomelissa91@gmail.com", linkedin: "https://linkedin.com/in/melissa-pinto-207341a6" },
+  { rollNo: "300940", name: "RANSING RASIKA SHRISH RAGINI", email: "srasika92@gmail.com", linkedin: "https://linkedin.com/in/rasika-ransing" },
+  { rollNo: "300944", name: "SANDESH KUMAR", email: "sandeshkmr07@gmail.com", linkedin: "https://linkedin.com/in/imsandeshkumar" },
+  { rollNo: "300945", name: "SATISH ADITYA", email: "adits11@gmail.com", linkedin: "https://linkedin.com/in/aditya-satish-5217b859" },
+  { rollNo: "300960", name: "VED KHYATI", email: "khyatived91@gmail.com", linkedin: "https://linkedin.com/in/khyatived" },
+  { rollNo: "300968", name: "PRADHAN PRATIK SUNIL", email: "pratik.pradhan27690@gmail.com", linkedin: "https://linkedin.com/in/pratikpradhan24" },
+  { rollNo: "300971", name: "ADITYA RAMESH TAWDE", email: "adityartawde@gmail.com", linkedin: "https://linkedin.com/in/tawdeaditya" },
+  { rollNo: "301102", name: "ROHIT ASNANI", email: "rohitasnani@gmail.com", linkedin: "https://linkedin.com/in/rohit-asnani-183a5282" },
+  { rollNo: "301109", name: "USHASI CHAUDHARI", email: "ushasi2cool@gmail.com", linkedin: "https://linkedin.com/in/ushasi-chaudhuri" },
+  { rollNo: "301122", name: "PRATEEK PRAMOD GUPTA", email: "prateekpramodgupta@gmail.com", linkedin: "https://linkedin.com/in/prateek-gupta-16885516" },
+  { rollNo: "301113", name: "CHINCHOLE SAYLI SANJAY", email: "saylichinchole12@gmail.com", linkedin: "https://linkedin.com/in/sayli-chinchole-77449464" },
+  { rollNo: "301114", name: "CHOPADE RAJUL ANIL", email: "chopaderajul@gmail.com", linkedin: "https://linkedin.com/in/rajul-chopade-54a348179" },
+  { rollNo: "301115", name: "CRASTO ROLAN GLADSTONE RICHARD", email: "rolan.crasto93@gmail.com", linkedin: "https://linkedin.com/in/rolan-crasto-8077b8183" },
+  { rollNo: "301116", name: "SHIVANI SUDHIR DEO", email: "shivanideo7@gmail.com", linkedin: "https://linkedin.com/in/shivani-deo-9837ab102" },
+  { rollNo: "301142", name: "PARANJPE ANIKET AVINASH", email: "aparanjpe93@gmail.com", linkedin: "https://linkedin.com/in/aniketparanjpe2015" },
+  { rollNo: "301153", name: "RAHI AVINASH SHET", email: "rahishet@gmail.com", linkedin: "https://linkedin.com/in/rahi-shet-ba152341" },
+  { rollNo: "301159", name: "VANLALHRUAII LEIVANG", email: "pgp08.260@iimrohtak.ac.in", linkedin: "https://linkedin.com/in/vanlalhruaii-leivang-948794146" },
+  { rollNo: "301161", name: "VINHERKAR SAI SURESH", email: "vinherkarsai23@gmail.com", linkedin: "https://linkedin.com/in/sai-vinherkar" },
+  { rollNo: "301163", name: "YELAMANCHILI SAVITA", email: "savisonu44@gmail.com", linkedin: "https://linkedin.com/in/savita-yelamanchili-41428b78" },
+  { rollNo: "301145", name: "PATIL GAURAV HEMANT", email: "ghp.gaurav@gmail.com", linkedin: "https://linkedin.com/in/ghpatil" },
+  { rollNo: "301156", name: "TALELE ASMITA ULHAS", email: "asmitautalele@gmail.com", linkedin: "https://linkedin.com/in/asmitaulhastalele" },
+  { rollNo: "301173", name: "YADAV JAYESH KASHINATH", email: "jayeshy014@gmail.com", linkedin: "https://linkedin.com/in/jayesh-yadav-aa7679aa" },
+  { rollNo: "301177", name: "RAMANE RUPESH RAVINDRA", email: "rupesh.r.ramane@gmail.com", linkedin: "https://linkedin.com/in/rupesh-ramane-0318249b" },
+  { rollNo: "301309", name: "BOSE PRINCE KRISTO", email: "boseprince11@gmail.com", linkedin: "https://linkedin.com/in/prince-bose" },
+  { rollNo: "301313", name: "DHUSIA SHARDUL HEMANT", email: "shard3103@gmail.com", linkedin: "https://linkedin.com/in/shardul-dhusia-513635169" },
+  { rollNo: "301317", name: "FERNANDES NICHOLAS JOHN", email: "fernandes.helen@itm.edu", linkedin: "https://linkedin.com/in/nicholas-john-fernandes" },
+  { rollNo: "301320", name: "GUPTA MAHENDRA TULSIRAM", email: "mahendra06gupta@gmail.com", linkedin: "https://linkedin.com/in/mahendra-gupta-57196118b" },
+  { rollNo: "301321", name: "JASTI ANISH", email: "anishjasti3101@gmail.com", linkedin: "https://linkedin.com/in/anishjasti3101" },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const alumniTableBody = document.querySelector("#alumni-table tbody");
+      const popupOverlay = document.getElementById("popup-overlay");
+      const popupContainer = document.getElementById("popup-container");
+      const messageText = document.getElementById("message-text");
+      const sendButton = document.getElementById("send-button");
+      const cancelButton = document.getElementById("cancel-button");
+
+      let currentAlumnus = null;
+
+      // Populate the table
+      alumniData.forEach((alumnus) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td>${alumnus.rollNo}</td>
+          <td>${alumnus.name}</td>
+          <td>${alumnus.email ? `<a href="mailto:${alumnus.email}">${alumnus.email}</a>` : "N/A"}</td>
+          <td>${alumnus.linkedin ? `<a href="${alumnus.linkedin}" target="_blank">LinkedIn</a>` : "N/A"}</td>
+          <td><button class="message-button" onclick="sendMessage('${alumnus.name}', '${alumnus.email}')">Message</button></td>
+        `;
+
+        alumniTableBody.appendChild(row);
+      });
+
+      // Show popup
+      window.sendMessage = (name, email) => {
+        currentAlumnus = { name, email };
+        document.querySelector(".popup-container h3").textContent = `Send a Message to ${name}`;
+        messageText.value = ""; // Clear the textarea
+        popupOverlay.style.display = "block";
+        popupContainer.style.display = "block";
+      };
+
+      // Close popup
+      const closePopup = () => {
+        popupOverlay.style.display = "none";
+        popupContainer.style.display = "none";
+      };
+
+      // Handle send button
+      sendButton.addEventListener("click", () => {
+        const message = messageText.value.trim();
+        if (message) {
+          alert(`Message sent to ${currentAlumnus.name} (${currentAlumnus.email}):\n\n${message}`);
+          closePopup();
+        } else {
+          alert("Please write a message before sending.");
+        }
+      });
+
+      // Handle cancel button
+      cancelButton.addEventListener("click", closePopup);
+
+      // Close popup when clicking outside
+      popupOverlay.addEventListener("click", closePopup);
+    });
+  </script>
+</body>
+</html>

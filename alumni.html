@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Student <span>Dashboard</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="demo.html"><i class="fas fa fa-home"></i></a></h3>
+      </div>
+      <div class="right_area">
+        <a href="demo.html" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="p.png" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="ongoing.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+        <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+        <a href="status.html"><i class="fas fa-th"></i><span>Application Status</span></a>
+        <a href="starred.html"><i class="fas fa-info-circle"></i><span>Starred Projects/span></a>
+        <a href="applymentor.html"><i class="fas fa-sliders-h"></i><span>Apply for Mentorship</span></a>
+        <a href="detail.html"><i class="fas fa-table"></i><span>Alumni Details</span></a>
+      </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        <img src="p.png" class="profile_image" alt="">
+        <h4>Jessica</h4>
+      </div>
+      <a href="ongoing.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+      <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+      <a href="status.html"><i class="fas fa fa-check-square"></i><span>Application Status</span></a>
+      <a href="starred.html"><i class="fas fa fa-star"></i><span>Starred Projects</span></a>
+      <a href="applymentor.html"><i class="fas fa fa-edit"></i><span>Apply for Mentorship</span></a>
+      <a href="#"><i class="fas fa fa-edit"></i><span>Referrals</span></a>
+      <a href="detail.html"><i class="fas fa-table"></i><span>Alumni Details</span></a>
+    </div>
+    <!--sidebar end-->
+
+    <style>
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card h3 {
+        margin-bottom: 10px;
+      }
+      .card p {
+        margin: 10px 0;
+      }
+      .card button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .card button:hover {
+        background-color: #45a049;
+      }
+      .status-message {
+        font-size: 16px;
+        margin-top: 10px;
+        color: #28a745;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div class="content">
+      <!-- Mentor 1 -->
+      <div class="card" id="mentor1">
+        <h3>REFERRAL CONTACT DETAILS</h3>
+        <p><strong>Mentor:</strong> Sharma</p>
+        <p><strong>Email ID:</strong> sharma@gmail.com</p>
+        <p><strong>Contact No.:</strong> 9834567753</p>
+        <p><strong>Role:</strong> Product Manager</p>
+        <p><strong>Company:</strong> IBM</p>
+        <button onclick="requestReferral('mentor1')">Request Referral</button>
+        <div class="status-message" id="status-mentor1"></div>
+      </div>
+  
+      <!-- Mentor 2 -->
+      <div class="card" id="mentor2">
+        <p><strong>Mentor:</strong> Ramesh</p>
+        <p><strong>Email ID:</strong> ramesh@gmail.com</p>
+        <p><strong>Contact No.:</strong> 9834522753</p>
+        <p><strong>Role:</strong> Principal Consultant</p>
+        <p><strong>Company:</strong> Microsoft</p>
+        <button onclick="requestReferral('mentor2')">Request Referral</button>
+        <div class="status-message" id="status-mentor2"></div>
+      </div>
+    </div>
+  
+    <script type="text/javascript">
+      // Function to handle referral request
+      function requestReferral(mentorId) {
+        // Hide the button after clicking
+        document.querySelector(`#${mentorId} button`).style.display = 'none';
+  
+        // Display a confirmation message
+        let statusMessage = '';
+        if (mentorId === 'mentor1') {
+          statusMessage = 'Referral request sent to Mentor Sharma. Please wait for a response.';
+        } else if (mentorId === 'mentor2') {
+          statusMessage = 'Referral request sent to Mentor Ramesh. Please wait for a response.';
+        }
+  
+        // Update status message in the respective mentor section
+        document.querySelector(`#status-${mentorId}`).textContent = statusMessage;
+      }
+    </script>
+  
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>

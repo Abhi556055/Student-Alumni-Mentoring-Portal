@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="logss.css">
+    <script>
+        // Function to validate input fields on submission
+        function acctype() {
+            var username = document.loginform.username.value;
+            var password = document.loginform.password.value;
+    
+            // Validate username (cannot be empty)
+            if (username.trim() === "") {
+                alert("Username cannot be empty.");
+                return false; // Prevent form submission
+            }
+    
+            // Validate password (at least 8 characters, 1 uppercase, 1 number, 1 special character)
+            var passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert("Password must have at least 8 characters, including 1 uppercase letter, 1 number, and 1 special character.");
+                return false; // Prevent form submission
+            }
+    
+            // Determine redirection based on username
+            if (username.toLowerCase() === "jessica") {
+                document.loginform.action = "ongoing.html";
+            } else {
+                document.loginform.action = "ongoingmen.html";
+            }
+            return true; // Allow form submission
+        }
+    
+        // Real-time password validation feedback
+        function validatePassword(input) {
+            var passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            var feedback = document.getElementById("password-feedback");
+    
+            if (passwordPattern.test(input.value)) {
+                feedback.style.color = "green";
+                feedback.textContent = "Valid password.";
+            } else {
+                feedback.style.color = "red";
+                feedback.textContent = "Password must have at least 8 characters, including 1 uppercase letter, 1 number, and 1 special character.";
+            }
+        }
+    
+        // Real-time username validation
+        function validateUsername(input) {
+            var feedback = document.getElementById("username-feedback");
+    
+            if (input.value.trim() === "") {
+                feedback.style.color = "red";
+                feedback.textContent = "Username cannot be empty.";
+            } else {
+                feedback.style.color = "green";
+                feedback.textContent = "Valid username.";
+            }
+        }
+    
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordField = document.loginform.password;
+            var toggleText = document.getElementById("toggle-password");
+    
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleText.innerText = "Hide Password";
+            } else {
+                passwordField.type = "password";
+                toggleText.innerText = "Show Password";
+            }
+        }
+    </script>
+    
+    <style>
+        /* Additional CSS for interactivity and visuals */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(tech.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+        }
+
+        .login-box {
+            width: 350px;
+            height: auto;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-box:hover {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 24px;
+            color: #1c8adb;
+        }
+
+        .login-box input {
+            width: 100%;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            background: transparent;
+            outline: none;
+            height: 40px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .login-box input[type="submit"] {
+            border: none;
+            outline: none;
+            height: 40px;
+            background: #1c8adb;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .login-box input[type="submit"]:hover {
+            cursor: pointer;
+            background: #39dc79;
+            color: #000;
+        }
+
+        .login-box a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            text-align: center;
+        }
+
+        .login-box a:hover {
+            color: #39dc79;
+        }
+
+        .feedback {
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            font-size: 14px;
+            color: #007bff;
+            margin-top: -10px;
+            display: inline-block;
+        }
+
+        .toggle-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>Login</h1>
+        <form name="loginform" onsubmit="return acctype()">
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="Enter your username" oninput="validateUsername(this)" />
+            <div id="username-feedback" class="feedback"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Enter your password" oninput="validatePassword(this)" />
+            <div id="password-feedback" class="feedback"></div>
+            <span id="toggle-password" class="toggle-password" onclick="togglePasswordVisibility()">Show Password</span><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+        <a href="#">Forgot Password?</a>
+    </div>
+</body>
+</html>

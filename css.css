@@ -1,0 +1,47 @@
+body { 
+  margin: 0; 
+  font-family: Arial, sans-serif;
+  height: 90vh; /* Adjust the height of the body */
+}
+.header {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  background-color: #333; 
+  padding: 1px 20px; 
+  color: white; 
+  height: 60px; /* Adjust the height of the header */
+} 
+.header .logo { 
+  display: flex; 
+  align-items: center; 
+}
+.header .logo img { 
+  height: 10px; /* Adjust the height of the logo */
+  margin-right: 20px; 
+} 
+.header .info { 
+  text-align: center; 
+} 
+.header .info h1 { 
+  margin: 0; 
+  font-size: 20px; /* Adjust the font size of the heading */
+} 
+.header .info p { 
+  margin: 5px 0; 
+  font-size: 12px; /* Adjust the font size of the paragraphs */
+}
+.header .nav { 
+  display: flex; 
+  gap: 20px; 
+}
+.header .nav a { 
+  color: white; 
+  text-decoration: none; 
+  font-size: 16px; 
+} 
+.header .nav a:hover { 
+  text-decoration: underline; 
+}
+
+  

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Mentor <span>Dashboard</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="demo.html"><i class="fas fa fa-home"></i></a></h3>
+      </div>
+      <div class="right_area">
+        <a href="demo.html" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="p.png" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="ongoingmen"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+        <a href="completedmen"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+        <a href="statusmen"><i class="fas fa-th"></i><span>Application Status</span></a>
+        <a href="alumnimen"><i class="fas fa-sliders-h"></i><span>Apply for Mentorship</span></a>
+      </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        <img src="p.png" class="profile_image" alt="">
+        <h4>Ramesh</h4>
+      </div>
+      <a href="ongoingmen.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+      <a href="completedmen.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+      <a href="#"><i class="fas fa fa-check-square"></i><span>Application Status</span></a>
+      <a href="alumnimen.html"><i class="fas fa fa-check-square"></i><span>Referrals Given</span></a>
+    </div>
+    <!--sidebar end-->
+
+    <style>
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card h3 {
+        margin-bottom: 10px;
+      }
+      .card p {
+        margin: 10px 0;
+      }
+      .card button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .card button:hover {
+        background-color: #45a049;
+      }
+      .status-message {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+      .accepted {
+        color: #28a745;
+      }
+      .denied {
+        color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div class="content">
+      <div class="card" id="application-request">
+        <h3>APPLICATION REQUEST</h3>
+        <button onclick="handleResponse('accept')">Accept</button>
+        <button onclick="handleResponse('deny')">Deny</button>
+        <p><strong>Team:</strong> 849 - Iris, Meenu, Aysha, Athul</p>
+        <p><strong>Project:</strong> IoT based Weather Monitoring System using Raspberry Pi</p>
+        <p><strong>Team Duration:</strong> 3 weeks</p>
+        <p><strong>Skills Developed:</strong> Raspberry Pi basics</p>
+        <div class="status-message" id="status-message"></div>
+      </div>
+    </div>
+  
+    <script type="text/javascript">
+      // Function to handle Accept or Deny response
+      function handleResponse(response) {
+        const statusMessage = document.getElementById('status-message');
+        
+        if (response === 'accept') {
+          statusMessage.textContent = 'The application has been accepted!';
+          statusMessage.className = 'status-message accepted'; // Apply accepted style
+        } else if (response === 'deny') {
+          statusMessage.textContent = 'The application has been denied.';
+          statusMessage.className = 'status-message denied'; // Apply denied style
+        }
+        
+        // Disable buttons after a decision is made
+        document.querySelector('button[onclick="handleResponse(\'accept\')"]').disabled = true;
+        document.querySelector('button[onclick="handleResponse(\'deny\')"]').disabled = true;
+      }
+    </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>

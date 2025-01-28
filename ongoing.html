@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Student <span>Dashboard</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="demo.html"><i class="fas fa fa-home"></i></a></h3>
+  
+    
+      <div class="right_area">
+        <a href="demo.html" class="logout_btn">Logout</a>
+      </div>
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="p.png" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        <a href="ongoing.html"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+        <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+        <a href="status.html"><i class="fas fa-th"></i><span>Application Status</span></a>
+        <a href="starred.html"><i class="fas fa-info-circle"></i><span>Starred Projects/span></a>
+        <a href="applymentor.html"><i class="fas fa-sliders-h"></i><span>Apply for Mentorship</span></a>
+      </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+        <img src="p.png" class="profile_image" alt="">
+        <h4>Jessica</h4>
+      </div>
+      <a href="#"><i class="fas fa-table"></i><span>Ongoing Projects</span></a>
+      <a href="completed.html"><i class="fas fa-table"></i><span>Completed Projects</span></a>
+      <a href="status.html"><i class="fas fa fa-check-square"></i><span>Application Status</span></a>
+      <a href="starred.html"><i class="fas fa fa-star"></i><span>Starred Projects</span></a>
+      <a href="applymentor.html"><i class="fas fa fa-edit"></i><span>Apply for Mentorship</span></a>
+      <a href="alumni.html"><i class="fas fa fa-edit"></i><span>Referrals</span></a>
+    </div>
+    <!--sidebar end-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Interactive Project Submission</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <style>
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .card {
+          background-color: #f9f9f9;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card h3 {
+          margin-bottom: 10px;
+        }
+        .card p {
+          margin: 10px 0;
+        }
+        .card textarea {
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+          resize: vertical;
+        }
+        .card button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .card button:hover {
+          background-color: #45a049;
+        }
+        .status-message {
+          font-size: 16px;
+          margin-top: 10px;
+          color: #28a745;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="content">
+        <!-- Project 1 Card -->
+        <div class="card" id="project1">
+          <h3>PROJECT 1: ROBOTICS</h3>
+          <p><strong>Title:</strong><br><textarea id="title1" placeholder="Enter project title"></textarea></p>
+          <p><strong>Duration:</strong><br><textarea id="duration1" placeholder="Enter project duration"></textarea></p>
+          <p><strong>Skills developed:</strong><br><textarea id="skills1" placeholder="Enter skills developed"></textarea></p>
+          <p><strong>Mentor:</strong><br><textarea id="mentor1" placeholder="Enter mentor name"></textarea></p>
+          <button onclick="applyForProject('project1')">Submit</button>
+          <div class="status-message" id="status-project1"></div>
+        </div>
+    
+        <!-- Project 2 Card -->
+        <div class="card" id="project2">
+          <h3>PROJECT 2: IoT</h3>
+          <p><strong>Title:</strong><br><textarea id="title2" placeholder="Enter project title"></textarea></p>
+          <p><strong>Duration:</strong><br><textarea id="duration2" placeholder="Enter project duration"></textarea></p>
+          <p><strong>Skills developed:</strong><br><textarea id="skills2" placeholder="Enter skills developed"></textarea></p>
+          <p><strong>Mentor:</strong><br><textarea id="mentor2" placeholder="Enter mentor name"></textarea></p>
+          <button onclick="applyForProject('project2')">Submit</button>
+          <div class="status-message" id="status-project2"></div>
+        </div>
+      </div>
+    
+      <script type="text/javascript">
+        // Function to handle project application
+        function applyForProject(projectId) {
+          // Get the input values
+          const title = document.getElementById(`title${projectId.charAt(projectId.length - 1)}`).value;
+          const duration = document.getElementById(`duration${projectId.charAt(projectId.length - 1)}`).value;
+          const skills = document.getElementById(`skills${projectId.charAt(projectId.length - 1)}`).value;
+          const mentor = document.getElementById(`mentor${projectId.charAt(projectId.length - 1)}`).value;
+    
+          // Check if all fields are filled
+          if (title && duration && skills && mentor) {
+            // Hide the submit button after clicking
+            document.querySelector(`#${projectId} button`).style.display = 'none';
+    
+            // Display a success message with the inputted values
+            let statusMessage = `You have successfully applied for ${title}.<br>Duration: ${duration}<br>Skills Developed: ${skills}<br>Mentor: ${mentor}`;
+            document.querySelector(`#status-${projectId}`).innerHTML = statusMessage;
+          } else {
+            // Display a message if fields are missing
+            document.querySelector(`#status-${projectId}`).innerHTML = "Please fill all the fields before submitting.";
+          }
+        }
+      </script>
+    
+    </body>
+    </html>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
+</html>
